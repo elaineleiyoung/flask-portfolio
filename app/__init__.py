@@ -36,7 +36,7 @@ ELAINE_USER_INFO = {
     'experiences':{
         'Teaching Assistant': ['Graded exams and homework for the classes Geometry, Algebra 2, Precalculus, and SAT preparatory',
                 'Documented and tracked students’ assignments and scores using spreadsheets',
-                'Communicated with students']
+                'Communicated with students regularly about progress through weekly emails']
     },
     'education':{
         'Boston University': ['bu.jpg'],
