@@ -412,12 +412,16 @@ button[type=submit]{
   }
   
   @media (max-width: 768px) {
+    button[type=submit]{
+        margin-left:15%;
+    }
     .timeline .event::before {
-        position:relative;
-        margin-top: 0px;
+        position:sticky;
+        margin-right: 5%;
         font-size: 12px;
     }
     .timeline .event .email{
+        margin-left: 65%;
         top: -40px;
     }
 
