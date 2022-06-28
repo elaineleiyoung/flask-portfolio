@@ -373,25 +373,54 @@ button[type=submit]{
       min-width: 0;
       font-size: 13px;
     }
+    .timeline .event .name{
+        margin-top: -40px;
+        margin-bottom: 40px;
+    }
+    .timeline .event .name,.email{
+        float: none;
+        right: 100px;
+    }
+    .timeline .event .email{
+        position: relative;
+        float: none;
+        top: -10px;
+        margin-left: 190px;
+    }
+    .timeline .event .content{
+        float: none;
+        margin-right: 0px;
+        margin-top: 10px;
+        font-size: 13px;
+    }
     .timeline h3 {
       font-size: 16px;
-    }
-    .timeline p {
-      padding-top: 20px;
     }
     section.lab h3.card-title {
       padding: 5px;
       font-size: 16px
     }
+
+    .timeline .event:before {
+        content: attr(data-date);
+        position:relative;
+        margin-left: 185px;
+        margin-bottom: 10px;
+        font-size: 16px;
+
+    }
   }
   
   @media (max-width: 768px) {
     .timeline .event::before {
-      left: 0.5px;
-      top: 20px;
-      min-width: 0;
-      font-size: 13px;
+        position:relative;
+        margin-top: 0px;
+        font-size: 12px;
     }
+    .timeline .event .email{
+        top: -40px;
+    }
+
     .timeline .event:nth-child(1)::before,
     .timeline .event:nth-child(3)::before,
     .timeline .event:nth-child(5)::before {
