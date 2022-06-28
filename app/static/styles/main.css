@@ -416,26 +416,16 @@ button[type=submit]{
         margin-left:15%;
     }
     .timeline .event::before {
-        position:sticky;
-        margin-right: 5%;
+        margin-right: 50%;
         font-size: 12px;
+        margin: 0% 0% 5% 30%;
     }
     .timeline .event .email{
         margin-left: 65%;
-        top: -40px;
+        top: -30px;
     }
 
-    .timeline .event:nth-child(1)::before,
-    .timeline .event:nth-child(3)::before,
-    .timeline .event:nth-child(5)::before {
-      top: 38px;
-    }
-    .timeline h3 {
-      font-size: 16px;
-    }
-    .timeline p {
-      padding-top: 20px;
-    }
+
   }
   /*——————————————
   others
