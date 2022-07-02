@@ -1,4 +1,4 @@
-#test_db.py
+# test_db.py
 
 import unittest
 from peewee import *
@@ -10,7 +10,7 @@ MODELS = [TimelinePost]
 # use an in-memory SQLite for tests
 test_db = SqliteDatabase(':memory:')
 
-class BaseTestCase(unittest.TestCase):
+class TestTimelinePost(unittest.TestCase):
     def setUp(self):
         # Bind model classes to test db. Since we have a complete list of
         # all models, we do not need to recursively bind dependencies.
