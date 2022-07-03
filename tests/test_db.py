@@ -35,3 +35,9 @@ class TestTimelinePost(unittest.TestCase):
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello world, I\'m Jane!')
         assert second_post.id == 2
         # TODO: Get timeline posts and assert that they are correct
+        posts = TimelinePost.select()
+        assert posts[0].name == "John Doe"
+        assert posts[0].email == "john@example.com"
+        assert posts[1].name == "Jane Doe"
+        assert posts[1].email == "jane@example.com"
+
