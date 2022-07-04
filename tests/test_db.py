@@ -1,4 +1,4 @@
-#test_db.py
+# test_db.py
 
 from sqlite3 import Time
 import unittest
@@ -11,7 +11,7 @@ MODELS = [TimelinePost]
 # use an in-memory SQLite for tests
 test_db = SqliteDatabase(':memory:')
 
-class BaseTestCase(unittest.TestCase):
+class TestTimelinePost(unittest.TestCase):
     def setUp(self):
         # Bind model classes to test db. Since we have a complete list of
         # all models, we do not need to recursively bind dependencies.
@@ -39,3 +39,4 @@ class BaseTestCase(unittest.TestCase):
         posts = TimelinePost.select()
         assert posts[0].name == "John Doe"
         assert posts[1].email == "jane@example.com"
+

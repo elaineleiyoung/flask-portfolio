@@ -1,5 +1,6 @@
 # APP TESTING
 
+
 import unittest
 import os
 from app import app
@@ -39,20 +40,20 @@ class AppTestCase(unittest.TestCase):
 
     # Edge cases; application of TDD
     def test_malformed_timeline_post(self):
-        response = self.client.post("/api/timeline-post/", data={"email": "john@example.com", "content": "Hello world, I'm John!"})
+
+        response = self.client.post("/api/timeline_post", data={"email": "john@example.com", "content": "Hello world, I'm John!"})
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid name" in html
 
-        response = self.client.post("/api/timeline-post/", data={"name": "John Doe", "email": "john@example.com", "content": ""})
+        response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "john@example.com", "content": ""})
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid content" in html
 
-        response = self.client.post("/api/timeline-post/", data={"name": "John Doe", "email": "not-an-email", "content": "Hello world, I'm John!"})
+        response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "not-an-email", "content": "Hello world, I'm John!"})
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid email" in html
         # TODO: Fix code to pass cases
-
 
