@@ -38,13 +38,14 @@
         e.preventDefault()
 
         const formData= new FormData(form)
-        const payload = new URLSearchParams(formData);
+        const timelineData = new URLSearchParams(formData);
+        
 
-        console.log([...payload])
+        console.log([...timelineData])
 
         fetch('/api/timeline_post', {
         method: 'POST',
-        body: payload,
+        body: timelineData,
         }, )
         .then(res => res.json())
         .then(data => console.log(data))

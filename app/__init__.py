@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, abort, Response
 from dotenv import load_dotenv
 from peewee import *
 import datetime
@@ -9,7 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 if os.getenv("TESTING") == "true":
     print("Running in test mode")
-    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', url=True)
+    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
 else:
     mydb = MySQLDatabase(os.getenv("MYSQL_DATABASE"),
         user=os.getenv("MYSQL_USER"),
@@ -100,6 +100,13 @@ def timeline():
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
+    #fixing test cases
+    if 'name' not in request.form:
+        return Response("Invalid name", status=400)
+    if 'email' not in request.form or '@' not in request.form['email']:
+        return Response("Invalid email", status=400)
+    if 'content' not in request.form or request.form['content'] == '':
+        return Response("Invalid content", status=400)
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
@@ -117,11 +124,16 @@ TimelinePost.select().order_by(TimelinePost.created_at.desc())
 ]
 }
 @app.route("/api/timeline_post/<id>", methods=["DELETE"])
-def timeline_delete(id):
-    guide = TimelinePost.query.get(id)
-    mydb.session.delete(guide)
-    mydb.session.commit()
+def delete_time_line_post(id):
+    data = TimelinePost.select().order_by(TimelinePost.created_at.desc())
+    counter = 1
+    for post in data:
+        if counter == int(id):
+            post.delete_instance()
+            break
+        else:
+            counter += 1
+    return "Post deleted"
 
-    return "Guide was successfully deleted"
 
 
