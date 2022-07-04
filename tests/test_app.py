@@ -1,4 +1,5 @@
-# APP TESTING - delete before pushing
+# APP TESTING
+
 
 import unittest
 import os
@@ -39,6 +40,7 @@ class AppTestCase(unittest.TestCase):
 
     # Edge cases; application of TDD
     def test_malformed_timeline_post(self):
+
         response = self.client.post("/api/timeline_post", data={"email": "john@example.com", "content": "Hello world, I'm John!"})
         assert response.status_code == 400
         html = response.get_data(as_text=True)
@@ -54,3 +56,4 @@ class AppTestCase(unittest.TestCase):
         html = response.get_data(as_text=True)
         assert "Invalid email" in html
         # TODO: Fix code to pass cases
+
