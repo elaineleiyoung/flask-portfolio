@@ -6,8 +6,6 @@ services:
       restart: always
       env_file:
         - .env
-      ports:
-        - "5000:5000"
       depends_on:
         - mysql
 
@@ -22,7 +20,7 @@ mysql:
 
 nginx:
     containter_name: nginx
-    image: jonsal/nginx-certbot
+    image: jonasal/nginx-certbot
     restart: always
     environment:
         - CERTBOT_EMAIL=name@example.com
