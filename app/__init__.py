@@ -29,6 +29,7 @@ class TimelinePost(Model):
 mydb.connect()
 mydb.create_tables([TimelinePost])
 print(mydb)
+mydb.close()
 
 STAR_USER_INFO = {
     'hobbies':{
@@ -111,18 +112,17 @@ def post_time_line_post():
     email = request.form['email']
     content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
-
+    db.close()
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
+   temp = [
+	model_to_dict(p)
+	for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+   db.close()
    return {
-       'timeline_posts': [
-           model_to_dict(p)
-           for p in
-TimelinePost.select().order_by(TimelinePost.created_at.desc())
-]
-}
+       'timeline_posts': temp }
 @app.route("/api/timeline_post/<id>", methods=["DELETE"])
 def delete_time_line_post(id):
     data = TimelinePost.select().order_by(TimelinePost.created_at.desc())
@@ -133,6 +133,7 @@ def delete_time_line_post(id):
             break
         else:
             counter += 1
+    db.close()   
     return "Post deleted"
 
 
