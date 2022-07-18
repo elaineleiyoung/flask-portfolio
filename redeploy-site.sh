@@ -5,11 +5,7 @@ cd ./flask-portfolio
 #updates project
 git fetch && git reset origin/main --hard
 
-#enters virtual environment and installs dependencies
-python -m venv python3-virtualenv
-source python3-virtualenv/bin/activate
-pip install -r requirements.txt
+#spin containers down to prevent out of memory issues on our VPS instances when building in the next step
+docker compose -f docker-compose.prod.yml down
 
-#deploys website by restarting myportfolio service
-systemctl daemon-reload
-systemctl restart myportfolio
+docker compose -f docker-compose.prod.yml up -d --build
