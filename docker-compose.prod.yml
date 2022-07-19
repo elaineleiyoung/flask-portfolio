@@ -19,7 +19,7 @@ services:
       - mydatabase:/var/lib/mysql
 
   nginx:
-    containter_name: nginx
+    container_name: nginx
     image: jonasal/nginx-certbot
     restart: always
     environment:
