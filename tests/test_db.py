@@ -40,3 +40,5 @@ class TestTimelinePost(unittest.TestCase):
         assert posts[0].name == "John Doe"
         assert posts[1].email == "jane@example.com"
 
+if __name__ == '__main__':
+    unittest.main()
