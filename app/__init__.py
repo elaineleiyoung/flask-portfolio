@@ -97,6 +97,7 @@ def hobbies():
 @app.route('/timeline')
 def timeline():
     posts = [model_to_dict(p) for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
+    mydb.close()
     return render_template('timeline.html', title = "Timeline", url=os.getenv("URL"), posts=posts)
 
 @app.route('/api/timeline_post', methods=['POST'])
@@ -112,7 +113,7 @@ def post_time_line_post():
     email = request.form['email']
     content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
-    db.close()
+    mydb.close()
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
@@ -120,7 +121,7 @@ def get_time_line_post():
    temp = [
 	model_to_dict(p)
 	for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())]
-   db.close()
+   mydb.close()
    return {
        'timeline_posts': temp }
 @app.route("/api/timeline_post/<id>", methods=["DELETE"])
@@ -133,7 +134,7 @@ def delete_time_line_post(id):
             break
         else:
             counter += 1
-    db.close()   
+    mydb.close()   
     return "Post deleted"
 
 
