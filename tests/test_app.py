@@ -57,3 +57,5 @@ class AppTestCase(unittest.TestCase):
         assert "Invalid email" in html
         # TODO: Fix code to pass cases
 
+if __name__ == '__main__':
+    unittest.main()
