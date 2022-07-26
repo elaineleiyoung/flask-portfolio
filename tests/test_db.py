@@ -4,6 +4,7 @@ from sqlite3 import Time
 import unittest
 from peewee import *
 
+os.environ['TESTING'] = 'true'
 from app import TimelinePost
 
 MODELS = [TimelinePost]
