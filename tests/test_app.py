@@ -25,7 +25,7 @@ class AppTestCase(unittest.TestCase):
 
         json = response.get_json()
         assert "timeline_posts" in json
-        assert len(json["timeline_posts"]) > 0
+        assert len(json["timeline_posts"]) == 0
 
         response2 = self.client.post("/api/timeline_post", data={
             "name": "Tony the Tiger",
@@ -34,8 +34,16 @@ class AppTestCase(unittest.TestCase):
         })
         assert response2.status_code == 200
 
-        response3 = self.client.get("/api/timeline_posts")
-        assert response3.status_code == 404
+        response = self.client.get("/api/timeline_post")
+        assert response.status_code == 200
+        assert response.is_json
+
+        json = response.get_json()
+        assert "timeline_posts" in json
+        assert len(json["timeline_posts"]) == 1
+        assert json["timeline_posts"][0]['name'] == "Tony the Tiger"
+        assert json["timeline_posts"][0]['email'] == "tony@frostedflakes.com"
+        assert json["timeline_posts"][0]['content'] == "They're grrrrrrrrreat!"
 
     # Edge cases; application of TDD
     def test_malformed_timeline_post(self):
