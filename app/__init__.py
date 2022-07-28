@@ -55,7 +55,7 @@ STAR_USER_INFO = {
 ELAINE_USER_INFO = {
         'hobbies':{
         'Exploring the city': ['boston.jpg'],
-        'Golfing': ['golf.jpg'],
+        'Playing': ['golf.jpg'],
         'Visiting cafes': ['cafe.jpg'],
         'Finding new music': ['music.jpg']
      },
