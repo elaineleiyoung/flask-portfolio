@@ -56,7 +56,7 @@ ELAINE_USER_INFO = {
         'hobbies':{
         'Exploring the city': ['boston.jpg'],
         'Playing golf': ['golf.jpg'],
-        'Visiting cafes': ['cafe.jpg'],
+        'Visiting local cafes': ['cafe.jpg'],
         'Finding new music': ['music.jpg']
      },
     'experiences':{
