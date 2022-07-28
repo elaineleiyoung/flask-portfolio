@@ -55,14 +55,15 @@ STAR_USER_INFO = {
 ELAINE_USER_INFO = {
         'hobbies':{
         'Exploring the city': ['boston.jpg'],
-        'Golfing': ['golf.jpg'],
-        'Visiting cafes': ['cafe.jpg'],
+        'Playing golf': ['golf.jpg'],
+        'Visiting local cafes': ['cafe.jpg'],
         'Finding new music': ['music.jpg']
      },
     'experiences':{
         'Teaching Assistant': ['Graded exams and homework for the classes Geometry, Algebra 2, Precalculus, and SAT preparatory',
                 'Documented and tracked students’ assignments and scores using spreadsheets',
-                'Communicated with students regularly about progress through weekly emails']
+                'Communicated with students regularly about progress through weekly emails'], 
+        'Meta x MLH Production Engineer Fellow': ['Creating a flask website using Jinja with a portfolio', 'Learning how to use Python and Flask to create a webpage!']
     },
     'education':{
         'Boston University': ['bu.jpg'],
@@ -124,6 +125,7 @@ def get_time_line_post():
    
    return {
        'timeline_posts': temp }
+       
 @app.route("/api/timeline_post/<id>", methods=["DELETE"])
 def delete_time_line_post(id):
     data = TimelinePost.select().order_by(TimelinePost.created_at.desc())
