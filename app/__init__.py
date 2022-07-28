@@ -124,6 +124,7 @@ def get_time_line_post():
    
    return {
        'timeline_posts': temp }
+       
 @app.route("/api/timeline_post/<id>", methods=["DELETE"])
 def delete_time_line_post(id):
     data = TimelinePost.select().order_by(TimelinePost.created_at.desc())
